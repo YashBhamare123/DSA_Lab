@@ -31,18 +31,27 @@ void insert_index(Node* head, Node *current, int index){
 }
 
 Node* delete_beg(Node *head){
-	if (head -> next != NULL)
-	Node *tmp = head -> next;
-	delete head;
-	return tmp;
+	Node *tmp;
+
+	if (head -> next != NULL){
+		cout << "inside";
+		tmp = head -> next;
+		cout<<head -> data<<endl;
+		delete head;
+		return tmp;
+	}
+
+	else{
+		cout << "Nothing to Delete" << endl;
+		return head;
+	}
 }
 
 void delete_end(Node *head){
-	while ((head -> next) -> next != NULL)
+	while (head -> next != NULL && (head -> next) -> next != NULL)
 		head = head -> next;
-
-	delete head-> next;
-	head -> next = NULL;
+		delete head-> next;
+		head -> next = NULL;
 }
 
 void delete_index(Node *head, int index){
@@ -102,5 +111,24 @@ int search(Node *head, int element){
 
 
 int main(){
-	
+	int num = 2;
+	Node *head = new Node;
+	while (true){
+		cin >> num;
+		if (num == 0){
+			break;
+		}
+
+		else if (num != 1){
+		Node *new_node = new Node;
+		new_node -> data = num;
+		head = insert_beg(head, new_node);		
+		}
+		else if (num == 1){
+				head = delete_beg(head);
+		}
+		else{
+			cout << "no ex";
+		}
+}
 }
