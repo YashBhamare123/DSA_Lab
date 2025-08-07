@@ -50,10 +50,55 @@ void delete_index(Node *head, int index){
 		if (head -> next != NULL)
 		head = head -> next;
 	}
+	Node *tmp = (head -> next) -> next;
+	delete head->next;
+	head -> next = tmp;
+}
 
-	 
+void delete_element(Node *head, int element){
+	int flag = 1;
+	int index = 0;
+	while (flag == 1){
+		if ((head -> next) -> next != NULL && (head -> next) -> data != element){
+			head = head -> next;
+		}
 
+		else if ((head -> next) -> data == element){
+			Node *tmp = (head -> next) -> next ;
+			delete head -> next;
+			head -> next = tmp;
+			flag = 0;
+		}
 
+		else if (((head -> next) -> next) -> data  == element){ ;
+			delete (head -> next) -> next;
+			flag = 0;
+	
+		}
+	}
+}
+
+int search(Node *head, int element){
+	int flag = 1;
+	int index = 0;
+	while (flag == 1){
+		if (head -> next != NULL && head -> data != element){
+			head = head -> next;
+			index++;
+
+		}
+		else if (head -> data == element){
+			flag = 0;
+			return index;
+		}
+
+		else
+		{
+			return -1;
+		}
+	}
+
+}
 
 
 int main(){
