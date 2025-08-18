@@ -37,16 +37,20 @@ int pop(Stack *st){
 }
 
 int peek(Stack st, int index){
-    while (index != -1){
-        if (st.Top -> next == NULL || index < 0)
-        cout <<"Invalid Index"<<endl;
-
-        else {
-            st.Top = st.Top -> next;
+    int flag = 1;
+    while (index != 0){
+        if (st.Top -> next == NULL || index < 0){
+            cout<<"Invalid Index"<<endl;
+            return -1;
         }
-        index--;
+        else{
+            st.Top = st.Top -> next;
+            index --;
+        }
     }
+    if (st.Top -> next != NULL)
     return st.Top->data;
+    else return -1;
 }
 
 int main(){
@@ -65,7 +69,6 @@ int main(){
     push(st, 20);
     push(st, 30);
 
-    cout<<pop(st)<<endl;
-    cout<<pop(st)<<endl;
+    cout<<peek(*st, 2)<<endl;
 }
 
